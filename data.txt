@@ -1,0 +1,29 @@
+
+    BKCoporation    Chairman     		Nguyen     X Y     30 10 1980           1     ha noi      No 1, Ta Quang Buu    nguyenXY@gmai.com   0123456789   	17/07/2023  	17/07/2023: 7h50/17h00
+																			        		    	18/07/2023: 7h51/17h05
+																			        		    	19/07/2023: 7h49/17h01
+    BKCoporation    Vicepresident     		Nguyen     X Y     30 10 1980           1     ha noi      No 1, Ta Quang Buu    nguyenXY@gmai.com   0123456789  	17/07/2023  	17/07/2023: 7h50/17h00
+																			        		   	18/07/2023: 7h51/17h05
+																			        		    	19/07/2023: 7h49/17h01
+    
+
+
+
+    BKEntertainment    CEO   			  Nguyen     X Y     30 10 1980           1     ha noi      No 1, Ta Quang Buu    nguyenXY@gmai.com   0123456789  	17/07/2023      17/07/2023: 7h50/17h00
+																			       	 			18/07/2023: 7h51/17h05
+																			        			19/07/2023: 7h49/17h01
+    BKEntertainment    ViceDirector     	  Nguyen     X Y     30 10 1980           1     ha noi      No 1, Ta Quang Buu    nguyenXY@gmai.com   0123456789  	17/07/2023      17/07/2023: 7h50/17h00
+																				       			18/07/2023: 7h51/17h05
+																			        		        19/07/2023: 7h49/17h01
+    BKEntertainment    Marketing manager    	  Nguyen     X Y     30 10 1980           1     ha noi      No 1, Ta Quang Buu    nguyenXY@gmai.com   0123456789         17/07/2023     17/07/2023: 7h50/17h00
+																			       			 	18/07/2023: 7h51/17h05
+																			        			19/07/2023: 7h49/17h01
+    BKEntertainment    Marketing Deputy    	  Nguyen     X Y     30 10 1980           1     ha noi      No 1, Ta Quang Buu    nguyenXY@gmai.com   0123456789 	 17/07/2023     17/07/2023: 7h50/17h00
+																			        			18/07/2023: 7h51/17h05
+																			       				19/07/2023: 7h49/17h01
+    BKEntertainment    Marketing Employee     	  Nguyen     X Y     30 10 1980           1     ha noi      No 1, Ta Quang Buu    nguyenXY@gmai.com   0123456789  	 17/07/2023     17/07/2023: 7h50/17h00
+																			       	 			18/07/2023: 7h51/17h05
+																			       				19/07/2023: 7h49/17h01
+    BKEntertainment    Marketing Employee     	  Nguyen     X Y     30 10 1980           1     ha noi      No 1, Ta Quang Buu    nguyenXY@gmai.com   0123456789 	 17/07/2023     17/07/2023: 7h50/17h00
+																			        			18/07/2023: 7h51/17h05
+																			        			19/07/2023: 7h49/17h01
