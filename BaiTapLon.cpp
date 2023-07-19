@@ -5,10 +5,9 @@ using namespace std;
 
 void hienThiTenCot() {
     cout <<"---------------------------------------------------------------------------------------------------------" <<   
-    "------------------------------------------------------------------------------------------" <<
-    "--------------------------------------------------------------------\n";
+         "--------------------------------------------------------------------------------------------------------\n";
     cout <<"STT 	Noi cong tac      Chuc vu                    Ho       Dem         Ten      DoB" <<
-    "   Que quan    Dia chi 		Email 		    SDT 	    Ngay lam viec 		Ngay lam: Gio den/Gio ve";
+    "   Que quan    Dia chi 		Email 		    SDT 	    Ngay lam viec 		Ngay lam: Gio den/Gio ve"<< endl;
 
 };
 
@@ -31,8 +30,8 @@ struct DoanhNghiep {
     struct HoTen HovaTen;
 };
 
-void hienThiTTDN(struct DoanhNghiep dn) {
-	cout<<"dn.DoB, dn.noicongtac, dn.chucvu, dn.diachi, dn.email, dn.sdt, dn.stt, dn.ngaybatdau, dn.giodenvave, dn.HovaTen";
+void hienThiTTDN(struct DoanhNghiep cn) {
+	cout<<cn.DoB, cn.noicongtac, cn.chucvu, cn.diachi, cn.email, &cn.sdt, &cn.stt, cn.ngaybatdau, cn.giodenvave, cn.HovaTen;
 }
 
 void hienThiDS(struct DoanhNghiep* dn, int sl) {
@@ -41,16 +40,43 @@ void hienThiDS(struct DoanhNghiep* dn, int sl) {
 	for(i = 0; i < sl; i++) {
 		hienThiTTDN(dn[i]);
 	}
-	cout<<"----------------------------------------------------------------------------"
-	"------------------------------------------------------------------------------------\n";
+	cout<<"----------------------------------------------------------------------------------------------------------------------"
+	"-------------------------------------------------------------------------------------------\n";
+}
+void docFile(struct DoanhNghiep* dn, int* sl){
+    string mytext;
+    ifstream MyReadFile("data2.txt");
+    int i;
+    if(MyReadFile.is_open()){   
+        for(;;){
+            struct DoanhNghiep cn;
+            cout <<cn.DoB, cn.noicongtac, cn.chucvu, cn.diachi, cn.email, &cn.sdt, &cn.stt, cn.ngaybatdau, cn.giodenvave, cn.HovaTen;
+            dn[i++] = cn;
+        }
+    }
+    else cout<<"Unable to open file!";
+MyReadFile.close();
+*sl = i;
+};
+void ghiFile(struct DoanhNghiep* dn, int sl) {
+	string fName;
+    getline(cin, fName );
+	cout <<"Nhap ten file: ";
+	ifstream MyReadFile("data2.txt");
+	int i;
+	for(i = 0; i < sl; i++) {
+		struct DoanhNghiep cn = dn[i];
+		cout <<	cn.DoB, cn.noicongtac, cn.chucvu, cn.diachi, cn.email, &cn.sdt, &cn.stt, cn.ngaybatdau, cn.giodenvave, cn.HovaTen;
+	}
+	MyReadFile.close();
 }
 
-    /*fstream MyFile("data.txt");
-    string  a;
-    while (!MyFile.eof()){
-       getline(MyFile,a);
-       cout<<a<<endl;
-    }
-    MyFile.close();*/
+int main(){
+    struct DoanhNghiep dn[1000];
+    int sl = 0;
+    hienThiDS(dn,sl);
+    docFile(dn, &sl);
+   return 0;
+}
 
 	
