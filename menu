@@ -1,0 +1,95 @@
+#include <iostream>
+#include <iomanip> //Set width
+using namespace std;
+void MenuSeletion(), Menu(), exitFunc();
+int main()
+{
+    Menu();
+    MenuSeletion();
+}
+void MenuSeletion()
+{
+    int day;
+    cout << "Enter your choice: \n";
+    cin >> day;
+    if (day <= 7 && day > 0)
+    {
+        switch (day)
+        {
+        case 1:
+            cout << "BkCorporation's basic information:\n";
+            cout << "Exit to main menu ? Y or N: ";
+            exitFunc();
+            break;
+        case 2:
+            cout << "Search for employee's profile:\n";
+            cout << "Exit to main menu ? Y or N: ";
+            exitFunc();
+            break;
+        case 3:
+            cout << "Employee's status:\n";
+            cout << "Exit to main menu ? Y or N: ";
+            exitFunc();
+            break;
+        case 4:
+            cout << "Unit's information:\n";
+            cout << "Exit to main menu ? Y or N: ";
+            exitFunc();
+            break;
+        case 5:
+            cout << "Add new employee to the list:\n";
+            cout << "Exit to main menu ? Y or N: ";
+            exitFunc();
+            break;
+        case 6:
+            cout << "Update employee's profile:\n";
+            cout << "Exit to main menu ? Y or N: ";
+            exitFunc();
+            break;
+        case 7:
+            cout << "Exit program....";
+            exit;
+        }
+    }
+    else
+    {
+        cout << "Wrong option!,\n Please enter a valid choice!";
+        MenuSeletion();
+    }
+}
+void Menu()
+{
+    cout << "......WELCOME TO BKCORPORATION.......\n";
+    cout << "1) BkCorporation's basic information.\n";
+
+    cout << "2) Search for employee's profile.\n";
+
+    cout << "3) Employee's status.\n";
+
+    cout << "4) Unit's information.\n";
+
+    cout << "5) Update new employee list.\n";
+
+    cout << "6) Update employee's profile.\n";
+
+    cout << "7) Exit program.\n";
+}
+void exitFunc()
+{
+    char choice;
+    cin >> choice;
+    char choosed = tolower(choice);
+    if (choosed == 'y')
+    {
+        Menu();
+    }
+    else if (choosed == 'n')
+    {
+        return;
+    }
+    else
+    {
+        cout << "INVALID! enter again: ";
+        exitFunc();
+    }
+};
