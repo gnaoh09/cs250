@@ -16,22 +16,22 @@ int main(){
     // close the opened file.
     infile.close();
 
-    std::ifstream inputFile("information.txt");
+    ifstream inputFile("information.txt");
     if (!inputFile.is_open()) {
-        std::cerr << "Error opening the file." << std::endl;
+        cerr << "Error opening the file." << endl;
         return 1;
     }
 
     int lineCount = 0;
-    std::string line;
+    string line;
 
-    while (std::getline(inputFile, line)) {
+    while (getline(inputFile, line)) {
         lineCount++;
     }
 
     inputFile.close();
 
-    std::cout << "Number of lines in the file: " << lineCount - 7<< std::endl;
+    cout << "Number of lines in the file: " << lineCount - 7<< endl;
 
     return 0;
 
