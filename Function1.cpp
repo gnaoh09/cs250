@@ -27,7 +27,7 @@ int main(){
         lineCount++;
     }
     inputFile.close();
-    cout << "The number of employee: " << lineCount - 7 << endl;  //The number of line without information is 7
+    cout << "Total number of employees is: " << lineCount - 7 << endl;  //The number of line without information is 7
 
     return 0;
 
