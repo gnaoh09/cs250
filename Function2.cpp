@@ -13,22 +13,21 @@ int main() {
     getline(cin, search_term);
 
     string line;
-    int lineCount = 0;
     bool found = false;
-
-    while (getline(inputFile, line)) {
-        lineCount++;
-        if (line.find(search_term) !=string::npos) {
+    int i;
+    int start = 0; 
+    int end = 40;   
+    string range;   
+    while (getline(inputFile, line )) {
+        range = line.substr(start, end - start + 1);       //Choose a range
+        if (range.find(search_term) !=string::npos) {      //Read a range of data
             cout << line << endl;
-            found = true;
+            found = true;       
         }
     }
-
     inputFile.close();
 
     if (!found) {
         cout << "Name not found in the file." << endl;
     }
-
-    
 }
