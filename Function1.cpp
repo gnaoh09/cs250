@@ -5,10 +5,8 @@ using namespace std;
 int main(){
     //Print all information
     string data, fulldata;    
-    int data2;
     ifstream infile;
     infile.open("information.txt");
-    cout << "Reading from the file" << endl;
     while (getline(infile, fulldata))
     {
         cout << fulldata << endl;
