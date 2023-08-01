@@ -56,7 +56,7 @@ int main() {
                                                                 
     while (std::getline(file, line)) {
         Employee emp;
-        std::istringstream iss(line);
+        istringstream iss(line);
         iss >> emp.no >> emp.name >> emp.day >> emp.month >> emp.year;
         iss >> emp.startHour  >> emp.startMinute;
         iss >> emp.endHour >>  emp.endMinute;
