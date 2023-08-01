@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <iomanip>
 #include <cmath>
 using namespace std;
 
@@ -48,7 +49,7 @@ int main() {
     
     ifstream file("1.12.txt");
     vector<Employee> employees;
-    int shortfallinMonth  = 0;
+    double shortfallinMonth  = 0;
     if (!file) {
         cerr << "Error opening the file.\n";
        
@@ -56,7 +57,7 @@ int main() {
                                                                 
     while (std::getline(file, line)) {
         Employee emp;
-        istringstream iss(line);
+        std::istringstream iss(line);
         iss >> emp.no >> emp.name >> emp.day >> emp.month >> emp.year;
         iss >> emp.startHour  >> emp.startMinute;
         iss >> emp.endHour >>  emp.endMinute;
@@ -70,16 +71,16 @@ int main() {
         int totalEndMinutes = emp.endHour * 60 + emp.endMinute;
         int expectedWorkMinutes = 8 * 60;                                   // 8 hours workday
         int actualWorkMinutes = totalEndMinutes - totalStartMinutes;
-        int shortfallMinutes = expectedWorkMinutes - actualWorkMinutes;
-        cout << "This employee has a shortfall of each day is " << shortfallMinutes << " minutes.\n";
+        double shortfallMinutes = (expectedWorkMinutes - actualWorkMinutes) / 60.0;
+        cout << "This employee has a shortfall of each day is " << round(shortfallMinutes) << " hours.\n";
             shortfallinMonth = shortfallinMonth + shortfallMinutes;
         }
      }
      if(shortfallinMonth < 0){
-        cout << "This employee has worked more " << abs(shortfallinMonth) << " minutes in a month";
+        cout << "This employee has worked more " << round(abs(shortfallinMonth)) << " hours in a month";
      }
      else{
-        cout <<"This employee has worked less " << abs(shortfallinMonth) << " minutes in a month";
+        cout <<"This employee has worked less " << round(abs(shortfallinMonth)) << " hours in a month";
      }
     
 
