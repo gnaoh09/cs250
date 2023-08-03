@@ -1,67 +1,87 @@
-#include<iostream>
-#include <sstream>
-#include<fstream> 
-#include <vector>
+#include <iostream>
 #include <string>
-#include<algorithm>
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <random>
+#include <algorithm>
 using namespace std;
-void Function1();
+string currentLine, pieces;
+vector<string> piecesContainer;
+vector<size_t> maxLength(10, 0);
+int k = 0, nowString;
+vector<vector<string>> twoDVector;
+void PrintTable();
 
-int main(){
-
-    Function1();
-
-    return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-void Function1(){ 
-    int i = 0;
-    string data, line, token;                                                      //Print all information
-    ifstream infile;
-    infile.open("information.txt");
-    while (getline(infile, line))
+int main()
+{
+    ifstream ScanFile("information.txt");
+    while (getline(ScanFile, currentLine))
     {
-        if (i >= 3){
-            vector<string> components;
-            stringstream ss(line);
-            while (ss >> token)
-            {
-                components.push_back(token);
-            };
+        stringstream currentStream(currentLine);
+        while (currentStream >> pieces)
+        {
+            piecesContainer.push_back(pieces);
+        }
+        twoDVector.push_back(piecesContainer); // Add the entire row to twoDVector
 
-            for (int j = 0; j < components.size(); j++)
+        if (k >= 3) // get string length from line 4
+        {
+            for (int s = 0; s < 10; s++)
             {
-                replace(components[j].begin(), components[j].end(),'_',' ');
-                cout << components[j] << "   ";
+                if (piecesContainer[s].length() > maxLength[s])
+                {
+                    maxLength[s] = piecesContainer[s].length();
+                }
             };
-            cout << endl;
-        };
-        i++;
+        }
+        k++;
+        piecesContainer.clear();
     }
-    infile.close();
-
-	                                                                        
+    ScanFile.close();
+    PrintTable();
+    
     ifstream inputFile("information.txt");                                  //Count number of employee
     if (!inputFile.is_open()) {
         cerr << "Error opening the file." << endl;
      
     }
     int lineCount = 0;
-   
+    string line;
     while (getline(inputFile, line)) {
         lineCount++;
     }
     inputFile.close();
-    cout << "Total number of employees is: " << lineCount - 9 << endl;  //The number of line without information is 7
+    cout << "Total number of employees is: " << lineCount -3 << endl;  //The number of line without information is 3
+    return 0;
 }
-    
+void PrintTable()
+{
+
+    vector<string> Headers = {"Company", "Level", "Name(Last/Mid/First)", "Birthdate", "ID", "Origin", "Residence", "Email", "Phone", "JobTaken"};
+    for (int j = 0; j < Headers.size(); ++j) // column
+    {
+        int st = (int)Headers[j].length();
+        int nt = (int)maxLength[j];
+        int et = nt - st;
+        string headerSpace(abs(et), ' ');
+        cout << Headers[j] << headerSpace << "  |  ";
+    }
+    cout << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+    for (int i = 3; i < k; ++i) // row
+    {
+        for (int j = 0; j < 10; ++j) // column
+        {
+            if (j < twoDVector[i].size()) // condition to avoid error printing
+            {
+                nowString = (int)maxLength[j] - (int)twoDVector[i][j].length();
+
+                string spacing(abs(nowString), ' ');
+                replace(twoDVector[i][j].begin(), twoDVector[i][j].end(), '_', ' ');
+                cout << twoDVector[i][j] << spacing << "  |  ";
+            }
+        }
+        cout << endl;
+    }
+}
