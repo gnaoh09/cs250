@@ -16,17 +16,22 @@ struct Employee {
     int endMinute;
 };
 
+void Function3();
 
 int main() {
+    Function3();
+}
+
+void Function3(){
     ifstream inputFile("1.12.txt");                            //Print data 
     if (!inputFile.is_open()) {
         cerr << "Error opening the file." << endl;
     }
     string search_term;
-    cout << "Enter the name to search for: ";
+    cout << "Enter the ID to search for: ";
     getline(cin, search_term);                             //Searching for ID
             cout <<"---------------------------------------------------------------------------------------------------------------------" <<endl;
-            cout << "No.         Name                           Day of work                              Start Time          End Time" << endl;
+            cout << "No.         Name                           Day of work                  Start Time               End Time" << endl;
             cout <<"---------------------------------------------------------------------------------------------------------------------"<<endl;
     string line;
     bool found = false;
@@ -43,7 +48,7 @@ int main() {
     }
     inputFile.close();
     if (!found) {
-        cout << "Name not found in the file." << endl;
+        cout << "Employee not found in the file." << endl;
     }
     
     
@@ -72,18 +77,22 @@ int main() {
         int expectedWorkMinutes = 8 * 60;                                   // 8 hours workday
         int actualWorkMinutes = totalEndMinutes - totalStartMinutes;
         double shortfallMinutes = (expectedWorkMinutes - actualWorkMinutes) / 60.0;
-        cout << "This employee has a shortfall of each day is " << round(shortfallMinutes) << " hours.\n";
+        if(shortfallMinutes < 0){
+        cout << "This employee has worked " << round(abs(shortfallMinutes)) << " hours more a day.\n";
+        }
+        else{
+            cout <<"This employee has worked "<< round(abs(shortfallMinutes)) << " hours less a day.\n";
+        }
             shortfallinMonth = shortfallinMonth + shortfallMinutes;
         }
      }
      if(shortfallinMonth < 0){
-        cout << "This employee has worked more " << round(abs(shortfallinMonth)) << " hours in a month";
+        cout << "This employee has worked " << round(abs(shortfallinMonth)) << " hours more in a month";
      }
      else{
-        cout <<"This employee has worked less " << round(abs(shortfallinMonth)) << " hours in a month";
+        cout <<"This employee has worked " << round(abs(shortfallinMonth)) << " hours less in a month";
      }
     
 
     file.close(); 
-    return 0;
 }
