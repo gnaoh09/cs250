@@ -23,6 +23,7 @@ void Function3(){
     }
     string search_term;
     cout << "Enter the ID to search for: ";
+    cin.ignore(); 
     getline(cin, search_term);                             //Searching for ID
             cout <<"---------------------------------------------------------------------------------------------------------------------" <<endl;
             cout << "No.         Name                           Day of work                  Start Time               End Time" << endl;
@@ -81,10 +82,10 @@ void Function3(){
         }
      }
      if(shortfallinMonth < 0){
-        cout << "This employee has worked " << round(abs(shortfallinMonth)) << " hours more in a month";
+        cout << "This employee has worked " << round(abs(shortfallinMonth)) << " hours more in a month" << endl;
      }
      else{
-        cout <<"This employee has worked " << round(abs(shortfallinMonth)) << " hours less in a month";
+        cout <<"This employee has worked " << round(abs(shortfallinMonth)) << " hours less in a month" << endl;
      }
     
 
