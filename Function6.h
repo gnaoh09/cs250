@@ -24,8 +24,8 @@ void newInput()
     currentPhonenum.clear();
     jobTaken.clear();
     addNewLine.clear();
-
-    cout << "---Enter information---\n";
+    cin.ignore();
+    cout << "---Enter employee's information---\n";
     cout << "1) Current work Unit: ";
     getline(cin, currentWorkUnit);
     cout << endl;
@@ -60,7 +60,7 @@ string createRandomIdNum()
     random_device rd;  // Create a random device to seed the engine
     mt19937 rng(rd()); // Create the Mersenne Twister engine and seed it with a random value from the random device
 
-    int min_value = 1;
+    int min_value = 70;
     int max_value = 99;
     uniform_int_distribution<int> dist(min_value, max_value);
 
@@ -144,39 +144,6 @@ void runFunction()
         writeFile << newWorker[s] << endl;
     }
     writeFile.close();
-    returnFunc();
+    return;
 }
 
-void returnFunc()
-{
-    cout << "Input 'A' to add profile or 'R' to return\n";
-    char choice, nextChar;
-    cin >> choice;
-    if (std::cin.get(nextChar) && nextChar == '\n')
-    {
-        // The input contains only one character
-        std::cout << "You entered a single character: " << choice << std::endl;
-    }
-    else
-    {
-        // The input contains more than one character
-        std::cout << "Invalid input. Please enter exactly one character." << std::endl;
-        returnFunc();
-    }
-
-    char choosed = tolower(choice);
-    if (choosed == 'a')
-    {
-        runFunction();
-    }
-    else if (choosed == 'r')
-    {
-        exit(0);
-    }
-    else
-    {
-        cout << "INVALID! enter again: ";
-        returnFunc();
-    }
-    cin.ignore();
-};
