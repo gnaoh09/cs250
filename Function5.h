@@ -10,7 +10,6 @@ string line, token, idNumber, newLine;
 vector<string> components, lines; // every lines in the txt file is passed in the lines vector,each strings in a line is passed in components[x] vector
 int i = 0;                        // ex: components[0] = CurrentworkPlace
 
-
 void scanId()
 {
     ifstream readFile("information.txt");
@@ -54,7 +53,7 @@ void changeInfo()
     if (number == 10)
     {
         cout << "Exit...";
-        exit(0);
+        return;
     }
 
     if (number > 10 || number < 1)
@@ -148,7 +147,7 @@ void menuSelect()
     cout << "7) Email: " << components[7] << endl;
     cout << "8) Phone number: " << components[8] << endl;
     cout << "9) Return to search ID " << endl;
-    cout << "10) Close the program " << endl;
+    cout << "10)  Back to main Menu " << endl;
 };
 
 void changeFile(string myString)
@@ -162,7 +161,7 @@ void changeFile(string myString)
     }
     for (int j = 0; j < components.size(); j++)
     {
-        replace(components[j].begin(), components[j].end(), ' ', '_'); // replace every space in each element with a '_'
+        replace(components[j].begin(), components[j].end(), ' ','_'); // replace every space in each element with a ''
         newLine = newLine + components[j] + "  ";
     };
     lines[i] = newLine; // i here is the number of the line holds fixed information
@@ -181,4 +180,5 @@ void changeFunction()
     }
     scanId();
     changeInfo();
+    return;
 };
