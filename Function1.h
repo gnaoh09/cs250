@@ -5,8 +5,8 @@
 #include <sstream>
 #include <random>
 #include <algorithm>
-
 using namespace std;
+
 string currentLine, pieces;
 vector<string> piecesContainer;
 vector<size_t> maxLength(10, 0);
@@ -14,7 +14,7 @@ int k = 0, nowString;
 vector<vector<string>> twoDVector;
 
 void Function1(){
-        ifstream ScanFile("information.txt");
+    ifstream ScanFile("information.txt");
     while (getline(ScanFile, currentLine))
     {
         stringstream currentStream(currentLine);
