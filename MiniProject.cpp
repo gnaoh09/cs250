@@ -1,10 +1,11 @@
-#include<iostream>
+#include <iostream>
 #include <sstream>
-#include<fstream> 
+#include <fstream> 
 #include <vector>
 #include <string>
 #include <cmath>
-#include<algorithm>
+#include <algorithm>
+
 #include "Function1.h"
 #include "Function2.h"
 #include "Function3.h"
@@ -13,7 +14,7 @@
 #include "Function6.h"
 using namespace std;
 void MenuSeletion();
-
+void exitFunc();
 void Menu()
 {
     cout << "......WELCOME TO BKCORPORATION.......\n";
@@ -33,10 +34,12 @@ void Menu()
 }
 
 
-int main(){
+int main(){                                         //Main 
     Menu();
     MenuSeletion();
 }
+
+
 void exitFunc()
 {
     char choice, nextChar;
