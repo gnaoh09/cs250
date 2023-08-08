@@ -1,39 +1,87 @@
-#include<iostream>
+#include <iostream>
 #include <sstream>
-#include<fstream> 
+#include <fstream>
 #include <vector>
 #include <string>
-#include<algorithm>
+#include <algorithm>
 using namespace std;
-
 void Function4(){
-
-    ifstream inputFile("information.txt");
-    if (!inputFile.is_open()) {
-        cerr << "Error opening the file." << endl;
-    }
-    
-    string search_term;
-    cout << "Enter the Work unit's name to search for: ";
+    vector<string> employees;
+    vector<string> partsContainer;
+    vector<vector<string>> nameVector;
+    string search_term, parts;
+    vector<size_t> maxLength(10, 0);
+    int k = 0, nowString;
+    cout << "Enter the Work Unit's name to search for: ";
+    cin.ignore();
     getline(cin, search_term);
-
+    replace(search_term.begin(), search_term.end(), ' ', '_');
     string line;
     bool found = false;
-    int i;
-    int start = 0; 
-    int end = 25;   
-    string range;   
-    while (getline(inputFile, line )) {
-        range = line.substr(start, end - start + 1);       //Choose a range
-        if (range.find(search_term) !=string::npos) {      //Read a range of data
-            replace(line.begin(), line.end(),'_',' ');
-            cout << line << " " << endl;
-            found = true;       
-        }
+
+    ifstream inputFile("information.txt");
+    if (!inputFile.is_open())
+    {
+        cerr << "Error opening the file." << endl;
     }
+
+    while (getline(inputFile, line))
+    {
+        if (k >= 3)
+        {
+            istringstream iss(line);
+            while (iss >> parts)
+            {
+                partsContainer.push_back(parts);
+            }
+            if (partsContainer[0].find(search_term) != string::npos)
+            {
+                found = true;
+                nameVector.push_back(partsContainer);
+            }
+            for (int s = 0; s < 10; s++)
+            {
+                if (partsContainer[s].length() > maxLength[s])
+                {
+                    maxLength[s] = partsContainer[s].length();
+                }
+            };
+        }
+        k++;
+        partsContainer.clear();
+    }
+
+    vector<string> Headers = {"Company", "Level", "Name(Last/Mid/First)", "Birthdate", "ID", "Origin", "Residence", "Email", "Phone", "JobTaken"};
+    for (int j = 0; j < Headers.size(); ++j) // column
+    {
+        int st = (int)Headers[j].length();
+        int nt = (int)maxLength[j];
+        int et = nt - st;
+        string headerSpace(abs(et), ' ');
+        cout << Headers[j] << headerSpace << "  |  ";
+    }
+    cout << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+    for (int i = 0; i < nameVector.size(); i++) // row
+    {
+        for (int j = 0; j < 10; ++j) // column
+        {
+            if (j < nameVector[i].size()) // condition to avoid error printing
+            {
+                nowString = (int)maxLength[j] - (int)nameVector[i][j].length();
+
+                string spacing(abs(nowString), ' ');
+                replace(nameVector[i][j].begin(), nameVector[i][j].end(), '_', ' ');
+                cout << nameVector[i][j] << spacing << "  |  ";
+            }
+        }
+        cout << endl;
+    }
+
     inputFile.close();
 
-    if (!found) {
-        cout << "Work unit not found in the file." << endl;
+    if (!found)
+    {
+        cout << "Work Unit not found in the file." << endl;
     }
-}   
+}
