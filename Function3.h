@@ -4,6 +4,7 @@
 #include <vector>
 #include <iomanip>
 #include <cmath>
+#include <algorithm>
 using namespace std;
 
 struct Employee {
@@ -37,6 +38,7 @@ void Function3(){
     while (getline(inputFile, line )) {
         range1 = line.substr(start1, end1 - start1 + 1);       //Choose a range
         if (range1.find(search_term) !=string::npos) {      //Read a range of data
+            replace(line.begin(), line.end(), '_', ' ');
             cout << line << endl;
             found = true;       
         }
@@ -69,7 +71,7 @@ void Function3(){
              if (emp.no == search_term) {   // Calculate the time shortfall for each day
         int totalStartMinutes = emp.startHour * 60 + emp.startMinute;
         int totalEndMinutes = emp.endHour * 60 + emp.endMinute;
-        int expectedWorkMinutes = 8 * 60;                                   // 8 hours workday
+        int expectedWorkMinutes = 10 * 60;                                   // 8 hours workday + 2 hour break
         int actualWorkMinutes = totalEndMinutes - totalStartMinutes;
         double shortfallMinutes = (expectedWorkMinutes - actualWorkMinutes) / 60.0;
         if(shortfallMinutes < 0){
